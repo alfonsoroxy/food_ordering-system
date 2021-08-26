@@ -32,6 +32,8 @@
   <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.png') }}" type="image/x-icon">
   <link rel="icon" href="{{ asset('frontend/images/favicon.png') }}" type="image/x-icon">
 
+  @livewireStyles
+
 </head>
 
 <body>
@@ -40,12 +42,10 @@
     <img src="images/preloader.gif" alt="preloader" class="img-fluid">
   </div> -->
 
-<!-- Header Start -->
-  @include('partials.header')
-<!-- Header Close -->
-
   <!-- Main Start  -->
+
   @yield('content')
+
   <!-- Main End -->
 
 <!--Footer start -->
@@ -72,5 +72,7 @@
 <!-- Main Script -->
 <script src="{{ asset('frontend/js/contact.js') }}"></script>
 <script src="{{ asset('frontend/js/script.js') }}"></script>
+
+@livewireScripts
 
 </html>
