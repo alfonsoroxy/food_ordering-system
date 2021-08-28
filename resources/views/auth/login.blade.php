@@ -1,54 +1,66 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+</x-guest-layout>
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+<x-guest-layout>
+  <main class="fxt-template-animation fxt-template-layout3" data-bg-image="{{ url('frontend/access/img/figure/bg3-l.jpg') }}">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-12 fxt-none-991">
+          <div class="fxt-header">
+            <div class="fxt-transformY-50 fxt-transition-delay-1">
+              <a href="{{ url('/') }}" class="fxt-logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="Logo"></a>
             </div>
-        @endif
+            <div class="fxt-transformY-50 fxt-transition-delay-2">
+              <h1>Welcome To EYBI SILOG</h1>
+            </div>
+            <div class="fxt-transformY-50 fxt-transition-delay-3">
+              <p>We are group who lost job cause of pandemic build and start this Silugan.
+                We start small bussiness and sell like Chicksilog compose of chicken , itlog (egg) and
+                sinangag (fried rice). Also many more Tocilog , Tapasilog , Sisigsilog and etc.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12 fxt-bg-color">
+          <div class="fxt-content">
+            <div class="fxt-form">
+              <h2>Login</h2>
+              <p>Login into your pages account</p>
+              <x-jet-validation-errors class="mb-4" />
+              <form method="post" action="{{ route('login') }}" name="frm-login">
+                @csrf
+                <div class="form-group">
+                  <label for="email" class="input-label">Email Address</label>
+                  <input type="email" id="email" class="form-control" name="email" required="required">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="input-label">Password</label>
+                  <input id="password" type="password" class="form-control" name="password" required="required">
+                  <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+                </div>
+                <div class="form-group">
+                  <div class="fxt-checkbox-area">
+                    <div class="checkbox">
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    </div>
+                    <div class="checkbox">
+                      <input id="checkbox1" type="checkbox">
+                      <label for="checkbox1">{{ __('Remember me') }}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="fxt-btn-fill">Log in</button>
+                </div>
+              </form>
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <div class="fxt-footer">
+              <p>Don't have an account?<a href="{{ url('register') }}" class="switcher-text2 inline-text">Register</a></p>
             </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-              <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                  {{ __('Register Here') }}
-              </a>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </x-guest-layout>

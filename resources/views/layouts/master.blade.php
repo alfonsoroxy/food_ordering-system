@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,43 +35,43 @@
 
 </head>
 
-<body>
+  <body>
 
-  <!-- <div class="preloader">
-    <img src="images/preloader.gif" alt="preloader" class="img-fluid">
-  </div> -->
+    <!-- <div class="preloader">
+      <img src="images/preloader.gif" alt="preloader" class="img-fluid">
+    </div> -->
 
-  <!-- Main Start  -->
+    <!-- Main Start  -->
 
-  @yield('content')
+    @yield('content')
 
-  <!-- Main End -->
+    <!-- Main End -->
 
-<!--Footer start -->
-  @include('partials.footer')
-<!-- Footer  End -->
+  <!--Footer start -->
+    @include('partials.footer')
+  <!-- Footer  End -->
 
-<!-- jQuery -->
-<script src="{{ asset('frontend/plugins/jQuery/jquery.min.js') }}"></script>
-<!-- Bootstrap JS -->
-<script src="{{ asset('frontend/plugins/bootstrap/bootstrap.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/aos/aos.js') }}"></script>
-<script src="{{ asset('frontend/plugins/shuffle/shuffle.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/date-picker/datepicker.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/clock-picker/clockpicker.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/video-popup/jquery-modal-video.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/swiper/swiper.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/instafeed/instafeed.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js') }}"></script>
+  <!-- jQuery -->
+  <script src="{{ asset('frontend/plugins/jQuery/jquery.min.js') }}"></script>
+  <!-- Bootstrap JS -->
+  <script src="{{ asset('frontend/plugins/bootstrap/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/aos/aos.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/shuffle/shuffle.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/date-picker/datepicker.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/clock-picker/clockpicker.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/video-popup/jquery-modal-video.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/swiper/swiper.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/instafeed/instafeed.min.js') }}"></script>
+  <script src="{{ asset('frontend/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js') }}"></script>
 
- <!-- Google Map -->
-<script src="{{ url('https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ') }}"></script>
-<script src="{{ asset('frontend/plugins/google-map/gmap.js') }}"></script>
-<!-- Main Script -->
-<script src="{{ asset('frontend/js/contact.js') }}"></script>
-<script src="{{ asset('frontend/js/script.js') }}"></script>
+   <!-- Google Map -->
+  <script src="{{ url('https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ') }}"></script>
+  <script src="{{ asset('frontend/plugins/google-map/gmap.js') }}"></script>
+  <!-- Main Script -->
+  <script src="{{ asset('frontend/js/contact.js') }}"></script>
+  <script src="{{ asset('frontend/js/script.js') }}"></script>
 
-@livewireScripts
-
+  @livewireScripts
+  </body>
 </html>

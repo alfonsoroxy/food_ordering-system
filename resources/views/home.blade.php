@@ -77,7 +77,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to Eybi Silog</span>
+                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to EYBI Silog</span>
                 <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Fresh,Delicious meal to reach your optimum health and fitness</h1>
                 <a href="{{ url('menu') }}" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
               </div>
@@ -94,7 +94,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to Eybi Silog</span>
+                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to EYBI Silog</span>
                 <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Good food starts with good ingridients.Have a great time with us</h1>
                 <a href="{{ url('menu') }}" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
               </div>
@@ -111,7 +111,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-7">
-                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to Eybi Silog</span>
+                <span data-swiper-parallax="300" class="text-primary font-extra font-md">Welcome to EYBI Silog</span>
                 <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">We deliver good quality food with great service to our customers</h1>
                 <a href="{{ url('menu') }}" class="btn btn-main mr-3" data-swiper-parallax="500">View Menu</a>
               </div>
@@ -168,7 +168,7 @@
 	<div class="container">
 		<div class="row  justify-content-center mb-5">
 			<div class="col-lg-8 text-center">
-				<span class="text-primary font-extra font-md">About Eybi Silog</span>
+				<span class="text-primary font-extra font-md">About EYBI Silog</span>
 				<h2 class="mt-3 mb-4">We are a modern silugan in the center of Quezon City </h2>
 			</div>
 		</div>
