@@ -3,16 +3,39 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ConfirmationController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PolicyController;
-use App\Http\Controllers\ShippingController;
-use App\Http\Controllers\TermsController;
+use App\Http\Livewire\AboutComponent;
+use App\Http\Livewire\CartComponent;
+use App\Http\Livewire\CategoryComponent;
+use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\MenuComponent;
+use App\Http\Livewire\PaymentComponent;
+use App\Http\Livewire\PolicyComponent;
+use App\Http\Livewire\TermsComponent;
+use App\Http\Livewire\ThankYouComponent;
+
+//Admin
+use App\Http\Livewire\Admin\AdminDashboardComponent;
+//Admin Category
+use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminAddCategoryComponent;
+use App\Http\Livewire\Admin\AdminEditCategoryComponent;
+//Admin Menu
+use App\Http\Livewire\Admin\AdminMenuComponent;
+use App\Http\Livewire\Admin\AdminAddMenuComponent;
+use App\Http\Livewire\Admin\AdminEditMenuComponent;
+//Admin Orders
+use App\Http\Livewire\Admin\AdminOrderComponent;
+use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
+
+use App\Http\Livewire\Admin\AdminContactComponent;
+
+//Customer
+use App\Http\Livewire\Customer\CustomerDashboardComponent;
+use App\Http\Livewire\Customer\CustomerOrderDetailsComponent;
+use App\Http\Livewire\Customer\CustomerOrdersComponent;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,33 +52,50 @@ use App\Http\Controllers\TermsController;
 //     return view('welcome');
 // });
 
-Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about', AboutComponent::class);
 
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart', CartComponent::class)->name('menu.cart');
 
-Route::get('/confirmation', [ConfirmationController::class, 'index']);
+Route::get('/menu-category/{category_slug}', CategoryComponent::class)->name('menu.category');
 
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/checkout', CheckoutComponent::class)->name('checkout');
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact', ContactComponent::class)->name('contact');
 
-Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/', HomeComponent::class);
 
-Route::get('/payment', [PaymentController::class, 'index']);
+Route::get('/menu', MenuComponent::class);
 
-Route::get('/policy', [PolicyController::class, 'index']);
+// Route::get('/payment', PaymentComponent::class);
 
-Route::get('/shipping', [ShippingController::class, 'index']);
+Route::get('/policy', PolicyComponent::class);
 
-Route::get('/terms', [TermsController::class, 'index']);
+Route::get('/terms', TermsComponent::class);
 
+Route::get('/thank-you', ThankYouComponent::class)->name('thank-you');
 
-// Auth
-Auth::routes();
+//Middleware for Customer
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
 
-//Admin
-Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('customer/orders', CustomerOrdersComponent::class)->name('customer.orders');
+    Route::get('customer/orders/{order_id}', CustomerOrderDetailsComponent::class)->name('customer.ordersdetails');
+});
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Middleware for Admin
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function() {
+    Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+
+    Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
+    Route::get('/admin/category/add',AdminAddCategoryComponent::class)->name('admin.addcategory');
+    Route::get('/admin/category/edit/{category_slug}',AdminEditCategoryComponent::class)->name('admin.editcategory');
+
+    Route::get('/admin/menus', AdminMenuComponent::class)->name('admin.menus');
+    Route::get('/admin/menu/add', AdminAddMenuComponent::class)->name('admin.addmenu');
+    Route::get('/admin/menu/edit/{menu_slug}',AdminEditMenuComponent::class)->name('admin.editmenu');
+
+    Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.orders');
+    Route::get('/admin/orders/{order_id}', AdminOrderDetailsComponent::class)->name('admin.ordersdetails');
+
+    Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contacts');
+});

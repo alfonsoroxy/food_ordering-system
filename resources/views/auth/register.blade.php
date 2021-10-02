@@ -30,12 +30,8 @@
               <form method="POST" action="{{ route('register') }}" name="frm-register">
                 @csrf
                 <div class="form-group">
-                  <label for="name" class="input-label">First Name</label>
-                  <input type="text" id="name" class="form-control" name="name" placeholder="First Name" required="required">
-                </div>
-                <div class="form-group">
-                  <label for="last_name" class="input-label">Last Name</label>
-                  <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name" required="required">
+                  <label for="name" class="input-label">Name</label>
+                  <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="required">
                 </div>
                 <div class="form-group">
                   <label for="email" class="input-label">Email Address</label>

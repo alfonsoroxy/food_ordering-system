@@ -1,311 +1,119 @@
+/**
+ * Created by Kausar on 06/10/2016.
+ */
 window.marker = null;
 
 function initialize() {
     var map;
-    var latitude = $('#map_canvas').attr('data-latitude');
-    var longitude = $('#map_canvas').attr('data-longitude');
-    var mapMarker = $('#map_canvas').attr('data-marker');
-    var nottingham = new google.maps.LatLng(latitude, longitude);
+
+    var nottingham = new google.maps.LatLng(51.507351, -0.127758);
+
     var style = [
         {
-            "featureType": "all",
-            "elementType": "labels",
-            "stylers": [
-                {
-                    "visibility": "on"
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "saturation": 36
-                },
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 40
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "visibility": "on"
-                },
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 16
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.icon",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 20
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 17
-                },
-                {
-                    "weight": 1.2
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.locality",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#c4c4c4"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative.neighborhood",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#707070"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
+            "featureType": "road.highway",
             "elementType": "geometry",
             "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 20
-                }
+                { "saturation": -100 },
+                { "lightness": -8 },
+                { "gamma": 1.18 }
             ]
-        },
-        {
+        }, {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [
+                { "saturation": -100 },
+                { "gamma": 1 },
+                { "lightness": -24 }
+            ]
+        }, {
             "featureType": "poi",
             "elementType": "geometry",
             "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 21
-                },
-                {
-                    "visibility": "on"
-                }
+                { "saturation": -100 }
             ]
-        },
-        {
-            "featureType": "poi.business",
-            "elementType": "geometry",
+        }, {
+            "featureType": "administrative",
             "stylers": [
-                {
-                    "visibility": "on"
-                }
+                { "saturation": -100 }
             ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#be2026"
-                },
-                {
-                    "lightness": "0"
-                },
-                {
-                    "visibility": "on"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                },
-                {
-                    "hue": "#ff000a"
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 18
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#575757"
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#ffffff"
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#2c2c2c"
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 16
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#999999"
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "saturation": "-52"
-                }
-            ]
-        },
-        {
+        }, {
             "featureType": "transit",
-            "elementType": "geometry",
             "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 19
-                }
+                { "saturation": -100 }
             ]
-        },
-        {
+        }, {
             "featureType": "water",
-            "elementType": "geometry",
+            "elementType": "geometry.fill",
             "stylers": [
-                {
-                    "color": "#000000"
-                },
-                {
-                    "lightness": 17
-                }
+                { "saturation": -100 }
             ]
+        }, {
+            "featureType": "road",
+            "stylers": [
+                { "saturation": -100 }
+            ]
+        }, {
+            "featureType": "administrative",
+            "stylers": [
+                { "saturation": -100 }
+            ]
+        }, {
+            "featureType": "landscape",
+            "stylers": [
+                { "saturation": -100 }
+            ]
+        }, {
+            "featureType": "poi",
+            "stylers": [
+                { "saturation": -100 }
+            ]
+        }, {
         }
     ];
+
     var mapOptions = {
+        // SET THE CENTER
         center: nottingham,
+
+        // SET THE MAP STYLE & ZOOM LEVEL
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        backgroundColor: "#000",
-        zoom: 15,
-        panControl: false,
-        zoomControl: true,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        overviewMapControl: false,
+        zoom:9,
+
+        // SET THE BACKGROUND COLOUR
+        backgroundColor:"#000",
+
+        // REMOVE ALL THE CONTROLS EXCEPT ZOOM
+        zoom:17,
+        panControl:false,
+        zoomControl:true,
+        mapTypeControl:false,
+        scaleControl:false,
+        streetViewControl:false,
+        overviewMapControl:false,
         zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.LARGE
+            style:google.maps.ZoomControlStyle.LARGE
         }
+
     }
-    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    var mapType = new google.maps.StyledMapType(style, {
-        name: "Grayscale"
-    });
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // SET THE MAP TYPE
+    var mapType = new google.maps.StyledMapType(style, {name:"Grayscale"});
     map.mapTypes.set('grey', mapType);
     map.setMapTypeId('grey');
-    var marker_image = mapMarker;
-    var pinIcon = new google.maps.MarkerImage(marker_image, null, null, null, new google.maps.Size(46, 50));
+
+    //CREATE A CUSTOM PIN ICON
+    var marker_image ='plugins/google-map/images/marker.png';
+    var pinIcon = new google.maps.MarkerImage(marker_image,null,null, null,new google.maps.Size(40, 60));
+
     marker = new google.maps.Marker({
         position: nottingham,
         map: map,
         icon: pinIcon,
-        title: 'CafeDine'
+        title: 'eventre'
     });
 }
-var map = document.getElementById('map_canvas');
-if (map != null) {
+if(($('#map').length)!=0){
     google.maps.event.addDomListener(window, 'load', initialize);
+    
 }

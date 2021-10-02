@@ -1,8 +1,4 @@
 <x-guest-layout>
-
-</x-guest-layout>
-
-<x-guest-layout>
   <main class="fxt-template-animation fxt-template-layout3" data-bg-image="{{ url('frontend/access/img/figure/bg3-l.jpg') }}">
     <div class="container">
       <div class="row align-items-center">
